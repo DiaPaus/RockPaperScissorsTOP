@@ -1,17 +1,14 @@
-const getComputerChoice=function(){
+
 const choices=['Rock','Paper','Scissors'];
+let humanScore=0, computerScore=0;
+
+const getComputerChoice=function(){
 return choices[Math.floor(Math.random()*3)]
 }
 
-const getHumanChoice=function(){
-    let humanChoice='';
-    while(!['rock','paper','scissors'].includes(humanChoice)) humanChoice=(prompt('Your choice? rock, papers or scissors?').toLowerCase());
-    return humanChoice[0].toUpperCase()+humanChoice.substring(1)
-}
-
-const playGame=function(){
-    let humanScore=0, computerScore=0;
-    const playRound=function(computerChoice,humanChoice){
+const playRound=function(computerChoice,humanChoice){
+    computerChoice=getComputerChoice();
+    humanChoice=this.value;
     let winnerCases={
             'Paper':'Rock',
             'Scissors':'Paper',
@@ -25,16 +22,20 @@ const playGame=function(){
             {console.log(`You win! ${(humanChoice)} beats ${(computerChoice)}`);
             humanScore++;}
     }
+     
 
-    for(let i=0;i<5;i++){
-        const computerChoice=getComputerChoice();
-        const humanChoice=getHumanChoice();
-        playRound(computerChoice,humanChoice)
-    }
+    // if(humanScore>computerScore) console.log(`You win! ${humanScore} to ${computerScore}`)
+    // else if (humanScore<computerScore) console.log(`You loose! ${computerScore} to ${humanScore}`)
+    // else console.log(`It's a tie ${computerScore} to ${humanScore}`)
+// }
 
-    if(humanScore>computerScore) console.log(`You win! ${humanScore} to ${computerScore}`)
-    else if (humanScore<computerScore) console.log(`You loose! ${computerScore} to ${humanScore}`)
-    else console.log(`It's a tie ${computerScore} to ${humanScore}`)
+const body=document.querySelector('body');
+
+for(let choice of choices){
+    let element=document.createElement('button');
+    element.id=`${choice.toLowerCase()}`;
+    element.value=`${choice}`
+    element.innerHTML=`${choice.toUpperCase()}`;
+    element.addEventListener('click',playRound);
+    body.appendChild(element);
 }
-
-playGame()
