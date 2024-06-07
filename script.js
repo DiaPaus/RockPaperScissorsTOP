@@ -34,7 +34,7 @@ const playRound=function(computerChoice,humanChoice){
 
         Computer: ${computerScore} You: ${humanScore}`);
         playing=false;
-        setTimeout(()=>document.location.reload(),2000);
+        setTimeout(()=>document.location.reload(),5000);
     }
     
     else { results.innerText=(`You win!!!!!
@@ -42,7 +42,7 @@ const playRound=function(computerChoice,humanChoice){
 
         You: ${humanScore} Computer: ${computerScore}`);
         playing=false;
-        setTimeout(()=>document.location.reload(),2000);}           
+        setTimeout(()=>document.location.reload(),5000);}           
     }   
 
 const body=document.querySelector('body');
